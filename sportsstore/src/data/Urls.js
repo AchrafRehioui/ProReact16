@@ -1,3 +1,5 @@
+import { DataTypes } from "./Types";
+
 const protocol = "http";
 const hostname = "localhost";
 const port = 3500;
