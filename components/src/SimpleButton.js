@@ -26,10 +26,10 @@ export class SimpleButton extends Component {
     }
 
     handleClick = () => {
-        this.setState({
-            counter: this.state.counter + 1,
-            hasButtonBeenClicked: true
-        });
+        for (let i = 0; i < 5; i++) {
+            this.setState({ counter: this.state.counter + 1 });
+        }
+        this.setState({ hasButtonBeenClicked: true });
         this.props.callback();
     }
 }
