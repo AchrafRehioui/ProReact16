@@ -1,4 +1,5 @@
 import React from "react";
+import { CallbackButton } from "./CallbackButton";
 
 
 export function Summary(props) {
@@ -8,14 +9,10 @@ export function Summary(props) {
         <td>{props.name} </td>
         <td>{props.name.length} </td>
         <td>
-            <button className="btn btn-primary btn-sm"
-                onClick={props.reverseCallback}>
-                Change
-            </button>
-            <button className="btn btn-info btn-sm m-1"
-                onClick={() => props.promoteCallback(props.name)}>
-                Promote
-            </button>
+             <CallbackButton callback={props.reverseCallback} />
+
+            <CallbackButton theme="info" text="Promote"
+                callback={() => props.promoteCallback(props.name)} />
         </td>
     </React.Fragment>
     )
