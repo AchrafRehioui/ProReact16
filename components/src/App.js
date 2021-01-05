@@ -1,5 +1,4 @@
-import React from "react";
-import { Message } from "./Message";
+import React, { useState } from "react";
 import { Summary } from "./Summary";
 import ReactDOM from "react-dom";
 
@@ -16,6 +15,11 @@ function promoteName(name) {
 }
 
 export default function App() {
+  const [counter, setCounter] = useState(0);
+
+  const incrementCounter = (increment) => setCounter(counter + increment);
+
+
   return (
     <table className="table table-sm table-striped">
       <thead>
@@ -24,7 +28,12 @@ export default function App() {
       <tbody>
         {names.map((name, index) =>
           <tr key={name}>
-            <Summary index={index} name={name} reverseCallback={reverseNames} promoteCallback={promoteName} />
+            <Summary index={index} name={name}
+              reverseCallback={reverseNames}
+              promoteCallback={promoteName}
+              counter={counter}
+              incrementCallback={incrementCounter}
+            />
           </tr>
         )}
       </tbody>
