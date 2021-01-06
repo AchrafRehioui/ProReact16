@@ -11,11 +11,14 @@ export class ThemeButton extends Component {
     }
 
     render() {
-        return <span className="m-1" onClick={this.handleClick}>
-            <button className={`btn btn-${this.props.theme}`}
-                onClick={this.handleClick}>
+        return <span className="m-1" onClick={this.handleClick} onClickCapture={this.handleClick}>
+
+            <button className={`btn btn-${this.props.theme}`} onClick={this.handleClick}>
+
                 Select {this.props.theme} Theme
-        </button>
+
+            </button>
+
         </span>
     }
 }
