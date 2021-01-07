@@ -24,7 +24,6 @@ export class Message extends Component {
         return this.state.showSpan ? <span>{div} </span> : div;
     }
 
-
     render() {
         console.log(`Render Message Component `);
         return (
@@ -36,15 +35,13 @@ export class Message extends Component {
         )
     }
 
-    componentDidMount() {
-        console.log("componentDidMount Message Component");
-    }
-
-    componentDidUpdate() {
-        console.log("componentDidUpdate Message Component");
-    }
-
-    componentWillUnmount() {
-        console.log("componentWillUnmount Message Component");
+    shouldComponentUpdate(newProps, newState) {
+        let change = newProps.message !== this.props.message;
+        if (change) {
+            console.log(`shouldComponentUpdate ${this.props.text}: Update Allowed`)
+        } else {
+            console.log(`shouldComponentUpdate ${this.props.text}: Update Prevented`)
+        }
+        return change;
     }
 }
