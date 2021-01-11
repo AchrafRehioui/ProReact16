@@ -1,36 +1,38 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router, Link, Route } from "react-router-dom";
+import { BrowserRouter as Router, NavLink, Route, Switch, Redirect }
+    from "react-router-dom";
 import { ProductDisplay } from "./ProductDisplay";
 import { SupplierDisplay } from "./SupplierDisplay";
+import { RouteInfo } from "./routing/RouteInfo";
+
 
 
 export class Selector extends Component {
 
-
-    // constructor(props) {
-    //     super(props);
-    //     this.state = {
-    //         selection: React.Children.toArray(props.children)[0].props.name
-    //     }
-    // }
-
-    // setSelection = (ev) => {
-    //     ev.persist();
-    //     this.setState({ selection: ev.target.name });
-    // }
-
     render() {
         return <Router>
             <div className="container-fluid">
+
                 <div className="row">
+
                     <div className="col-2">
-                        <div><Link to="/products">Products</Link></div>
-                        <div><Link to="/suppliers">Suppliers</Link></div>
+                        <NavLink className="m-2 btn btn-block btn-primary"
+                            activeClassName="active"
+                            to="/products">Products</NavLink>
+                        <NavLink className="m-2 btn btn-block btn-primary"
+                            activeClassName="active"
+                            to="/suppliers">Suppliers</NavLink>
+                        <NavLink className="m-2 btn btn-block btn-primary"
+                            activeClassName="active" to="/info">Route Info</NavLink>
                     </div>
 
                     <div className="col">
-                        <Route path="/products" component={ProductDisplay} />
-                        <Route path="/suppliers" component={SupplierDisplay} />
+                        <Switch>
+                            <Route path="/products" component={ProductDisplay} />
+                            <Route path="/suppliers" component={SupplierDisplay} />
+                            <Route path="/info" component={RouteInfo} />
+                            <Redirect to="/products" />
+                        </Switch>
                     </div>
                 </div>
             </div>
