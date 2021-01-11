@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import { startCreatingProduct } from "./stateActions";
+//import { startCreatingProduct } from "./stateActions";
+import { resetStore } from "./customReducerEnhancer";
 
 
 export class StoreAccess extends Component {
@@ -33,15 +34,15 @@ export class StoreAccess extends Component {
     }
 
     dispatchAction = () => {
-        this.props.store.dispatch(startCreatingProduct())
+        this.props.store.dispatch(resetStore())
     }
 
 
     selectData() {
         let storeState = this.props.store.getState();
         return Object.entries(this.selectors).map(([k, v]) => [k, v(storeState)])
-        .reduce((result, [k, v]) => ({ ...result, [k]: v}), {});
-        }
+            .reduce((result, [k, v]) => ({ ...result, [k]: v }), {});
+    }
 
 
     handleDataStoreChange() {
