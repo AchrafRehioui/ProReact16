@@ -14,13 +14,13 @@ const enhancedReducer = customReducerEnhancer(
         })
 );
 
-const restMiddleware = createRestMiddleware(
-    "http://localhost:3500/api/products",
-    "http://localhost:3500/api/suppliers");
+// const restMiddleware = createRestMiddleware(
+//     "http://localhost:3500/api/products",
+//     "http://localhost:3500/api/suppliers");
 
 export default createStore(enhancedReducer,
     compose(applyMiddleware(multiActions),
-        applyMiddleware(restMiddleware),
+        applyMiddleware(createGraphQLMiddleware()),
         asyncEnhancer(2000)));
 
 export { saveProduct, saveSupplier, deleteProduct, deleteSupplier }
