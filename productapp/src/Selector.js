@@ -5,6 +5,8 @@ import { ToggleLink } from "./routing/ToggleLink";
 import { RoutedDisplay } from "./routing/RoutedDisplay";
 import { IsolatedTable } from "./IsolatedTable";
 import { IsolatedEditor } from "./IsolatedEditor";
+import { RequestError } from "./webservice/RequestError";
+
 
 export class Selector extends Component {
 
@@ -16,6 +18,7 @@ export class Selector extends Component {
             url: `/${child.props.name.toLowerCase()}`,
             datatype: child.props.datatype
         }));
+
         return <Router getUserConfirmation={this.customGetUserConfirmation}>
             <div className="container-fluid">
                 <div className="row">
@@ -31,6 +34,8 @@ export class Selector extends Component {
                                 exact={true} />
                             <Route path="/isolated/:mode/:id?"
                                 component={IsolatedEditor} />
+                            <Route path="/error/:message"
+                                component={RequestError} />
                             {routes.map(r =>
                                 <Route key={r.url}
                                     path={`/:datatype(${r.datatype})/:mode?/:id?`}
