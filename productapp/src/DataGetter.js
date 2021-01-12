@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { PRODUCTS, SUPPLIERS } from "./store/dataTypes";
+//import { PRODUCTS, SUPPLIERS } from "./store/dataTypes";
 
 export const DataGetter = (dataType, WrappedComponent) => {
 
@@ -7,11 +7,14 @@ export const DataGetter = (dataType, WrappedComponent) => {
         render() {
             return <WrappedComponent {...this.props} />
         }
+
+
         componentDidMount() {
-            this.props.getData(PRODUCTS);
-            if (dataType === SUPPLIERS) {
-                this.props.getData(SUPPLIERS);
-            }
+            // this.props.getData(PRODUCTS);
+            // if (dataType === SUPPLIERS) {
+            // this.props.getData(SUPPLIERS);
+            // }
+            this.props.getData(dataType);
         }
     }
-}  
+}

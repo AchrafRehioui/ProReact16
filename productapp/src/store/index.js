@@ -4,7 +4,8 @@ import stateReducer from "./stateReducer";
 import { customReducerEnhancer } from "./customReducerEnhancer";
 import { multiActions } from "./multiActionMiddleware";
 import { asyncEnhancer } from "./asyncEnhancer";
-import { createRestMiddleware } from "../webservice/RestMiddleware";
+//import { createRestMiddleware } from "../webservice/RestMiddleware";
+import { createGraphQLMiddleware } from "../graphql/GraphQLMiddleware";
 
 const enhancedReducer = customReducerEnhancer(
     combineReducers(
